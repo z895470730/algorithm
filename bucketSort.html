@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>桶排序</title>
+	</head>
+	<body>
+		<script>
+			// 算法思路：
+			// 桶排序就是假设有若干个桶，然后将不同的数据根据所属区间分配到不同的桶内，
+			// 在桶内进行排序，最后连接所有的桶，是一种牺牲空间省时间的做法
+			// 1.先获取待排序数组的最大最小值，以便确定每个桶的容量
+			// 2.确定桶的容量
+			// 3.将桶初始化为 数组
+			// 4.将不同的数据分到不同的桶中
+			// 5.根据情况选择不同的算法，对桶内数据排序
+			// 6.拼接所有桶
+			var arr = [30,12,62,42,53,11,44,25]
+			function bucketSort(arr, bucketSize) {
+				var len = arr.length;
+				var max = arr[0];
+				var min = arr[0];
+				if(len == 1){
+					return arr;
+				};
+				//获取最大最小值
+				for(var i = 0; i < len; i++){
+					min = arr[i] < min ? arr[i] : min;
+					max = arr[i] > max ? arr[i] : max;
+				};
+				//确定桶的容量
+				var bucketCotent = Math.floor((max - min)/bucketSize) + 1;
+				//初始化桶
+				var bucket = new Array(bucketCotent);
+				for(var i = 0; i < bucket.length; i ++){
+					bucket[i] = [];
+				}
+				//分桶
+				for(var i = 0; i < len; i ++){
+					bucket[Math.floor((arr[i] - min)/bucketCotent)].push(arr[i])
+				}
+				//对所有桶进行排序
+				for(var i = 0; i < bucket.length; i++){
+					bucket[i] = bucket[i].sort((a,b)=>{return a-b})	//可以根据情况决定使用什么排序方法，这里为了方便就直接调用了sort
+				}
+				//拼接
+				var result = [];
+				for(var i = 0; i < bucketSize; i ++){
+					result = result.concat(bucket[i]);
+				}
+				return result;
+			}
+			console.log(bucketSort(arr,5))
+		</script>
+	</body>
+</html>
