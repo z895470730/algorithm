@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>选择排序</title>
+	</head>
+	<body>
+		<script>
+			// 算法思路：
+			// 每次遍历length-i个数据，并找出其中的最小值，i为已排序好数据的个数
+			// 找到最小的之后与第i+1个数据交换位置
+            // 是最稳定的排序算法，无论什么数据时间复杂度都为O(n²)
+			var arr = [30,12,62,42,53,11,44,25]
+			function chooseSort(arr){
+				for(var index = 0; index < arr.length; index ++){
+					var flag = index;  //flag用来保存每次遍历，数组中最小值的位置
+					var min = arr[index]
+					for(var i = flag + 1; i < arr.length; i++){
+						if(arr[i] < min){
+							min = arr[i];
+							flag = i;
+						}
+					}
+					swap(arr,flag,index)//交换位置
+				}
+				return arr;
+			}
+
+			function swap(arr,flag,index){
+				var temp = arr[flag];
+				arr[flag] = arr[index];
+				arr[index] = temp;
+			}
+			console.log(chooseSort(arr))
+		</script>
+	</body>
+</html>
