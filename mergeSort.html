@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>归并排序</title>
+</head>
+<body>
+    <script>
+        // 算法思想：
+        // 1.mergesort函数通过不断递归调用实现数组的分割
+        // 2.分割后传给merge函数排序合并，再进行下一步合并（如第一次将数组分割到单个数字两两比较合并，第二次传入merge的参数是两个包含两个元素的数组。。。一次类推）
+        // 3.merge函数拿到没有排序好的两个序列，对其进行排序，谁小谁先进result，直至一个数组元素全部放完，结束循环
+        // 4.循环结束后，判断left和right哪个数组还有元素，全部放入result
+        // 5.排序好的序列result传回mergesort，与令一个序列再合并，直至最后合并为一个序列
+        var arr = [12, 23, 1,2,3,5,6];
+        function mergeSort(arr) {  
+            var len = arr.length;
+            if(len < 2){
+                return arr;
+            };
+            var middle = Math.floor(len/2); //传入进来数组的中点
+            var left = arr.slice(0, middle);
+            var right = arr.slice(middle);
+            return merge(mergeSort(left),mergeSort(right)); //通过mergesort函数的递归调用，将数组不断分割，分割为单数时传递给merge，进行排序
+        }
+
+        function merge(left,right){
+            var result = [];
+            while(left.length && right.length){ //&&前为false返回&&前的值，&&前为true返回&&后的值；直到其中一个数组没有元素时，停止执行
+                if(left[0] < right[0]){
+                    result.push(left.shift());  //将小元素先放进result，以进行排序，直接从left，right中弹出第一个元素（也是left，right中最小的元素）
+                }else{                          //直至一个数组的元素完全放完，可以说明剩下的另一个数组内所有值都大于，当时result中的最大值，结束循环
+                    result.push(right.shift())
+                };
+            }
+
+                while(left.length){             //将剩下一个数组的所有元素放入result
+                    result.push(left.shift());
+                };
+
+                while(right.length){
+                    result.push(right.shift());
+                };
+                return result;
+        }
+			console.log(mergeSort(arr));
+    </script>
+</body>
+</html>
