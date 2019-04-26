@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>中序遍历</title>
+	</head>
+	<body>
+		<script>
+			var tree = {
+				val:10,
+				left:{
+					val:7,
+					left:null,
+					right:{
+						val:11,
+						left:{
+							val:54,
+							left:{
+								val:3,
+								right:null,
+								left:null
+							},
+							right:{
+								val:1,
+								left:null,
+								right:null
+							}
+						},
+						right:{
+							val:20,
+							left:null,
+							right:null
+						}
+					}
+				},
+				right:{
+					val:33,
+					right:{
+						val:12,
+						right:null,
+						left:null
+					},
+					left:{
+						val:21,
+						left:null,
+						right:null
+					}
+				},
+			}							
+			
+			var result = [];
+			function inorderTraversal(tree){	
+				// if(tree.left){
+				// 	inorderTraversal(tree.left)
+				// }
+				// result.push(tree.val);
+				// if(tree.right){
+				// 	inorderTraversal(tree.right)
+				// }
+				// return result
+				//简化
+				function mod(tree){
+					if(tree){
+						mod(tree.left);
+						result.push(tree.val);
+						mod(tree.right);
+					}
+				}
+				mod(tree);
+				return result;
+			}
+			console.log(inorderTraversal(tree));
+		</script>
+	</body>
+</html>
