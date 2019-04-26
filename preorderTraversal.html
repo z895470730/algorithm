@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>前序遍历</title>
+	</head>
+	<body>
+		<script>
+			var tree = {
+				val:10,
+				left:{
+					val:7,
+					left:null,
+					right:{
+						val:11,
+						left:{
+							val:54,
+							left:{
+								val:3,
+								right:null,
+								left:null
+							},
+							right:{
+								val:1,
+								left:null,
+								right:null
+							}
+						},
+						right:{
+							val:20,
+							left:null,
+							right:null
+						}
+					}
+				},
+				right:{
+					val:33,
+					right:{
+						val:12,
+						right:null,
+						left:null
+					},
+					left:{
+						val:21,
+						left:null,
+						right:null
+					}
+				},
+			}							
+			
+			
+			function preorderTraversal(tree){
+				var stack = [tree];
+				var result = [];
+				while(stack.length > 0){
+					var top = stack.pop();
+					result.push(top.val);
+					if(top.right){
+						stack.push(top.right);
+					}
+					if(top.left){
+						stack.push(top.left);
+					}
+				}
+				return result
+			}
+			console.log(preorderTraversal(tree));
+		</script>
+	</body>
+</html>
