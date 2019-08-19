@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<script>
-			var tree = {
+			let tree = {
 				val:10,
 				left:{
 					val:7,
@@ -45,24 +45,23 @@
 						right:null
 					}
 				},
-			}							
-			
-			
-			function preorderTraversal(tree){
-				var stack = [tree];
-				var result = [];
+			};							
+				
+			const preorderTraversal = tree =>{
+				let stack = [tree];
+				let result = [];
 				while(stack.length > 0){
-					var top = stack.pop();
+					let top = stack.pop();
 					result.push(top.val);
 					if(top.right){
 						stack.push(top.right);
-					}
+					};
 					if(top.left){
 						stack.push(top.left);
-					}
-				}
-				return result
-			}
+					};
+				};
+				return result;
+			};
 			console.log(preorderTraversal(tree));
 		</script>
 	</body>
