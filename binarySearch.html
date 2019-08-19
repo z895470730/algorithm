@@ -5,28 +5,20 @@
 </head>
 <body>
     <script>
-        function binarySearch(arr,target){
+        binarySearch = (arr, target) =>{
             //如果序列不为已排序序列，可以先进行排序
-            var low = 0;
-            var high = arr.length - 1;
-            var mid;
+            let low = 0;
+            let high = arr.length - 1;
+            let mid;
             while(low <= high){
-                mid = Math.floor((low + high)/2);
-                console.log(mid)
-                if(target == arr[mid]){
-                    return mid;
-                }
-                if(target > arr[mid]){
-                    low = mid + 1;
-                }
-                
-                if(target < arr[mid]){
-                    high = mid - 1;
-                }
+                mid = Math.floor((low + high) / 2);
+                if(target === arr[mid]) return mid;
+                if(target > arr[mid]) low = mid + 1;
+                if(target < arr[mid]) high = mid - 1;
             }
         }
-        var arr = [1,2,3,4,5,6,24]
-        console.log(binarySearch(arr,24));
+        let arr = [1, 2, 3, 4, 5, 6, 24];
+        binarySearch(arr, 24);
     </script>
 </body>
 </html>
