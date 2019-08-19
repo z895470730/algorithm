@@ -9,27 +9,26 @@
 			算法思想：反复扫描待排序记录序列，在扫描过程中顺次比较相邻两个元素大小，若逆序就交换 
 		-->
 		<script>
-			var arr = [48,62,35,77,55,14,35,98,22,40]
-			function bubble(arr){
-				var current = 0;
-				var count = 0;	//每遍历一次数组，下一趟排序时就少遍历一个元素
-				var length = arr.length;
-				var flag = true;	//设置标志位，当遍历数组一次，没有发生任何交换时，直接跳出循环
+			var arr = [48, 62, 35, 77, 55, 14, 35, 98, 22, 40]
+			const bubble = arr =>{
+				let current = 0;
+				let count = 0;	//每遍历一次数组，下一趟排序时就少遍历一个元素
+				let length = arr.length;
+				let flag = true;	//设置标志位，当遍历数组一次，没有发生任何交换时，直接跳出循环
 				while(flag){
-					flag = false
+					flag = false;
 					while(current + 1 < length - count){
-						if(arr[current] > arr[current + 1]){
-                            //交换 并当交换操作被执行时，就将标志位设置为true
+						if(arr[current] > arr[current + 1]){	//交换 并当交换操作被执行时，就将标志位设置为true
 							var temp = arr[current + 1];
 							arr[current + 1] = arr[current];
 							arr[current] = temp;
 							flag = true;
 						}
-						current++;
+						current ++;
 					}
 					current = 0;
-					count++;
-					console.log("第"+count+"趟："+arr)
+					count ++;
+					console.log("第" + count + "趟：" + arr);
 				}
 			}
 			bubble(arr);
