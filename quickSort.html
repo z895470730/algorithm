@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>快速排序</title>
-</head>
-<body>
-    <script>
-        var arr = [30,12,61,42,53,11,44,25]
-        
-        function quickSort(arr, left, right) {
-            var partitionIndex;
-            var len = arr.length;
-            var left = typeof left != 'number' ? 0 : left;
-            var right = typeof right != 'number' ? len - 1 : right;
-            if(left < right){
-                partitionIndex = partition(arr,left,right);
-                quickSort(arr,left,partitionIndex - 1);
-                quickSort(arr, partitionIndex + 1,right);
-            }
-            return arr;
-        }
+	<head>
+		<title>快速排序</title>
+	</head>
+	<body>
+		<script>
+			let arr = [30, 12, 61, 42, 53, 11, 44, 25];
+			
+			const swap = (arr,a,b) =>{
+				let temp = arr[a];
+				arr[a] = arr[b];
+				arr[b] = temp;
+			};
 
-        function partition(arr,left,right){
-            var pivot = left;
-            var point = pivot + 1;
-            for(var i = point; i <= right; i ++){
-                if(arr[i] < arr[pivot]){
-                    swap(arr,i,point);
-                    point++
-                }
-            }
-            swap(arr,pivot,point - 1);
-            console.log(arr)
-            return point - 1
-        }
+			const partition = (arr, left, right) =>{
+				let pivot = left;
+				let point = pivot + 1;
+				for(let i = point; i <= right; i ++){
+					if(arr[i] < arr[pivot]){
+						swap(arr,i,point);
+						point++;
+					};
+				};
+				swap(arr,pivot,point - 1);
+				return point - 1;
+			};
 
-        function swap(arr,a,b){
-            var temp = arr[a];
-            arr[a] = arr[b];
-            arr[b] = temp
-        }
+			const quickSort = (arr, left, right) =>{
+				let partitionIndex = 0;
+				let len = arr.length;
+				let left = typeof left !== 'number' ? 0 : left;
+				let right = typeof right !== 'number' ? len - 1 : right;
+				if(left < right){
+					partitionIndex = partition(arr, left, right);
+					quickSort(arr, left, partitionIndex - 1);
+					quickSort(arr, partitionIndex + 1, right);
+				};
+				return arr;
+			};
 
-        console.log(quickSort(arr))
-    </script>
-</body>
+			console.log(quickSort(arr));
+		</script>
+	</body>
 </html>
