@@ -11,7 +11,7 @@
 				let temp = arr[a];
 				arr[a] = arr[b];
 				arr[b] = temp;
-			};
+			}
 
 			const partition = (arr, left, right) =>{
 				let pivot = left;
@@ -20,11 +20,11 @@
 					if(arr[i] < arr[pivot]){
 						swap(arr,i,point);
 						point++;
-					};
-				};
+					}
+				}
 				swap(arr,pivot,point - 1);
 				return point - 1;
-			};
+			}
 
 			const quickSort = (arr, left, right) =>{
 				let partitionIndex = 0;
@@ -35,9 +35,9 @@
 					partitionIndex = partition(arr, left, right);
 					quickSort(arr, left, partitionIndex - 1);
 					quickSort(arr, partitionIndex + 1, right);
-				};
+				}
 				return arr;
-			};
+			}
 
 			console.log(quickSort(arr));
 		</script>

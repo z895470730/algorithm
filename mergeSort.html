@@ -18,30 +18,29 @@
 
 				while(left.length && right.length){ //&&前为false返回&&前的值，&&前为true返回&&后的值；直到其中一个数组没有元素时，停止执行
 					if(left[0] < right[0]){
-							result.push(left.shift());  //将小元素先放进result，以进行排序，直接从left，right中弹出第一个元素（也是left，right中最小的元素）
+						result.push(left.shift());  //将小元素先放进result，以进行排序，直接从left，right中弹出第一个元素（也是left，right中最小的元素）
 					}else{                          //直至一个数组的元素完全放完，可以说明剩下的另一个数组内所有值都大于，当时result中的最大值，结束循环
-							result.push(right.shift());
-					};
-				};
+						result.push(right.shift());
+					}
+				}
 
 				while(left.length){             //将剩下一个数组的所有元素放入result
-						result.push(left.shift());
-				};
+					result.push(left.shift());
+				}
 
 				while(right.length){
-						result.push(right.shift());
-				};
-				
+					result.push(right.shift());
+				}
 				return result;
 			}
 
 			const mergeSort = arr =>{  
-					let len = arr.length;
-					if(len < 2) return arr;
-					let middle = Math.floor(len / 2); //传入进来数组的中点
-					let left = arr.slice(0, middle);
-					let right = arr.slice(middle);
-					return merge(mergeSort(left), mergeSort(right)); //通过mergesort函数的递归调用，将数组不断分割，分割为单数时传递给merge，进行排序
+				let len = arr.length;
+				if(len < 2) return arr;
+				let middle = Math.floor(len / 2); //传入进来数组的中点
+				let left = arr.slice(0, middle);
+				let right = arr.slice(middle);
+				return merge(mergeSort(left), mergeSort(right)); //通过mergesort函数的递归调用，将数组不断分割，分割为单数时传递给merge，进行排序
 			}
 
 			console.log(mergeSort(arr));

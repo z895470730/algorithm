@@ -15,7 +15,7 @@
 				let temp = arr[flag];
 				arr[flag] = arr[index];
 				arr[index] = temp;
-			};
+			}
 
 			const chooseSort = arr =>{
 				for(let index = 0; index < arr.length; index ++){
@@ -25,12 +25,12 @@
 						if(arr[i] < min){
 							min = arr[i];
 							flag = i;
-						};
-					};
+						}
+					}
 					swap(arr, flag, index);	//交换位置
-				};
+				}
 				return arr;
-			};
+			}
 
 			console.log(chooseSort(arr));
 		</script>

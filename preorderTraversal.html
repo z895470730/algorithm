@@ -45,7 +45,7 @@
 						right:null
 					}
 				},
-			};							
+			}							
 				
 			const preorderTraversal = tree =>{
 				let stack = [tree];
@@ -55,13 +55,13 @@
 					result.push(top.val);
 					if(top.right){
 						stack.push(top.right);
-					};
+					}
 					if(top.left){
 						stack.push(top.left);
-					};
-				};
+					}
+				}
 				return result;
-			};
+			}
 			console.log(preorderTraversal(tree));
 		</script>
 	</body>
