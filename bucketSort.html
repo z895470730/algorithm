@@ -24,7 +24,7 @@
 				for(let i = 0; i < len; i ++){
 					min = arr[i] < min ? arr[i] : min;
 					max = arr[i] > max ? arr[i] : max;
-				};
+				}
 				//确定桶的容量
 				let bucketCotent = Math.floor((max - min) / bucketSize) + 1;
 				//初始化桶
@@ -35,18 +35,18 @@
 				//分桶
 				for(let i = 0; i < len; i ++){
 					bucket[Math.floor((arr[i] - min) / bucketCotent)].push(arr[i])
-				};
+				}
 				//对所有桶进行排序
 				for(let i = 0; i < bucket.length; i ++){
 					bucket[i] = bucket[i].sort((a,b)=>a-b)	//可以根据情况决定使用什么排序方法，这里为了方便就直接调用了sort
-				};
+				}
 				//拼接
 				let result = [];
 				for(let i = 0; i < bucketSize; i ++){
 					result = result.concat(bucket[i]);
-				};
+				}
 				return result;
-			};
+			}
 			console.log(bucketSort(arr, 5));
 		</script>
 	</body>

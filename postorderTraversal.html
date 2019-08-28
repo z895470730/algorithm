@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<script>
-			var tree = {
+			let tree = {
 				val:10,
 				left:{
 					val:7,
@@ -46,9 +46,9 @@
 					}
 				},
 			}							
-			var result = [];
-			function postorderTraversal(tree){	
-				function mod(tree){
+			let result = [];
+			const postorderTraversal = tree =>{	
+				const mod = tree =>{
 					if(tree){
 						mod(tree.left);
 						mod(tree.right);
